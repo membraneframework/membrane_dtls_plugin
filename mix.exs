@@ -1,24 +1,24 @@
-defmodule Membrane.Template.Mixfile do
+defmodule Membrane.DTLS.Mixfile do
   use Mix.Project
 
   @version "0.1.0"
-  @github_url "https://github.com/membraneframework/membrane_template_plugin"
+  @github_url "https://github.com/membraneframework/membrane_dtls_plugin"
 
   def project do
     [
-      app: :membrane_template_plugin,
+      app: :membrane_dtls_plugin,
       version: @version,
-      elixir: "~> 1.9",
+      elixir: "~> 1.10",
       elixirc_paths: elixirc_paths(Mix.env()),
       start_permanent: Mix.env() == :prod,
       deps: deps(),
 
       # hex
-      description: "Template Plugin for Membrane Multimedia Framework",
+      description: "DTLS implementation of Handshake behaviour for Membrane ICE plugin",
       package: package(),
 
       # docs
-      name: "Membrane Plugin: Template",
+      name: "Membrane DTLS plugin",
       source_url: @github_url,
       homepage_url: "https://membraneframework.org",
       docs: docs()
@@ -36,7 +36,10 @@ defmodule Membrane.Template.Mixfile do
 
   defp deps do
     [
-      {:membrane_core, "~> 0.5.1"},
+      {:membrane_core, "~> 0.6.0"},
+      {:membrane_ice_plugin,
+       git: "https://github.com/membraneframework/membrane_ice_plugin.git", branch: "elixir-dtls"},
+      {:ex_dtls, git: "https://github.com/membraneframework/ex_dtls.git"},
       {:ex_doc, "~> 0.22", only: :dev, runtime: false},
       {:dialyxir, "~> 1.0.0", only: :dev, runtime: false},
       {:credo, "~> 1.4", only: :dev, runtime: false}
@@ -57,9 +60,9 @@ defmodule Membrane.Template.Mixfile do
   defp docs do
     [
       main: "readme",
-      extras: ["README.md"],
+      extras: ["README.md", "LICENSE"],
       source_ref: "v#{@version}",
-      nest_modules_by_prefix: [Membrane.Template]
+      nest_modules_by_prefix: [Membrane.DTLS]
     ]
   end
 end
