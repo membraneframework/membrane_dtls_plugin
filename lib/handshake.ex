@@ -7,7 +7,7 @@ defmodule Membrane.DTLS.Handshake do
   * client_mode :: boolean()
   * dtls_srtp :: boolean()
 
-  Please refer to `ExDTLS` library documentation for meaning of these fields.
+  For the rest of field meanings please refer to `ExDTLS` library documentation.
   """
   @behaviour Membrane.ICE.Handshake
 
@@ -23,7 +23,8 @@ defmodule Membrane.DTLS.Handshake do
         dtls_srtp: opts[:dtls_srtp]
       )
 
-    {:ok, %{:dtls => dtls}}
+    {:ok, fingerprint} = ExDTLS.get_cert_fingerprint(dtls)
+    {:ok, fingerprint, %{:dtls => dtls}}
   end
 
   @impl Handshake
