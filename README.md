@@ -4,7 +4,7 @@
 [![API Docs](https://img.shields.io/badge/api-docs-yellow.svg?style=flat)](https://hexdocs.pm/membrane_dtls_plugin/)
 [![CircleCI](https://circleci.com/gh/membraneframework/membrane_dtls_plugin.svg?style=svg)](https://circleci.com/gh/membraneframework/membrane_dtls_plugin)
 
-This plugin provides DTLS (including DTLS-SRTP one) implementation of Handshake behaviour for [Membrane ICE Plugin](https://github.com/membraneframework/membrane_ice_plugin.git).
+DTLS and DTLS-SRTP Handshake implementation for [Membrane ICE Plugin](https://github.com/membraneframework/membrane_ice_plugin).
 
 ## Installation
 
