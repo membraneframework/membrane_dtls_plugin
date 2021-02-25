@@ -28,7 +28,7 @@ defmodule Membrane.DTLS.Handshake do
   end
 
   @impl Handshake
-  def connection_ready(%{dtls: dtls, client_mode: false}), do: :ok
+  def connection_ready(%{client_mode: false}), do: :ok
 
   @impl Handshake
   def connection_ready(%{dtls: dtls, client_mode: true}) do
