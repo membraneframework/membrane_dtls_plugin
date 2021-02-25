@@ -24,11 +24,14 @@ defmodule Membrane.DTLS.Handshake do
       )
 
     {:ok, fingerprint} = ExDTLS.get_cert_fingerprint(dtls)
-    {:ok, fingerprint, %{:dtls => dtls}}
+    {:ok, fingerprint, %{:dtls => dtls, :client_mode => opts[:client_mode]}}
   end
 
   @impl Handshake
-  def connection_ready(%{dtls: dtls}) do
+  def connection_ready(%{client_mode: false}), do: :ok
+
+  @impl Handshake
+  def connection_ready(%{dtls: dtls, client_mode: true}) do
     ExDTLS.do_handshake(dtls)
   end
 
