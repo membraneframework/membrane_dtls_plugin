@@ -44,7 +44,7 @@ defmodule Membrane.DTLS.IntegrationTest do
     assert tx_remote_km == rx_local_km
     assert tx_protection_profile == rx_protection_profile
 
-    {client_master_key, server_master_key, crypto_profile} = tx_handshake_data
+    {client_master_key, server_master_key, _crypto_profile} = tx_handshake_data
     assert byte_size(client_master_key) > 0
     assert byte_size(client_master_key) == byte_size(server_master_key)
   end
